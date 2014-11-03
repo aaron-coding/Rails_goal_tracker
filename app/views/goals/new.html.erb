@@ -1,0 +1,19 @@
+<h1>Create new goal</h1>
+
+<form action="<%= goals_url %>" method="POST">
+  <%= render 'layouts/auth_input' %>
+  
+  <label>
+    Goal
+    <input type="text" name="goal[goal]">
+  </label>
+  
+  <label>
+    Top Secret
+  <input type="checkbox" 
+    name="goal[top_secret]" 
+    value="true">
+  </label>
+  
+  <input type="submit" value="Create goal">
+</form>

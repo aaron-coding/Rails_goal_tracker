@@ -2,8 +2,6 @@ require 'spec_helper'
 require 'rails_helper'
 
 feature "the signup process" do 
-
-  
   it "has a new user page" do
     visit new_user_url
     expect(page).to have_content("Sign up")

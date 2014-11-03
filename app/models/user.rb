@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   
   after_initialize :ensure_session_token
   
+  has_many(
+    :goals
+  )
+  
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
@@ -26,6 +30,10 @@ class User < ActiveRecord::Base
     self.session_token = generate_token
     self.save
     self.session_token
+  end
+  
+  def public_goals
+    goals.where(top_secret: false)
   end
   
   private

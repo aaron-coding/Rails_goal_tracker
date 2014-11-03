@@ -1,7 +1,7 @@
 <h1>Sign up</h1>
 
 <form action="<%= users_url %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <%= render 'layouts/auth_input' %>
   
   <label>
     Username
