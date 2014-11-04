@@ -12,3 +12,22 @@
 <% end %>
 
 </ul>
+
+<h4>Comments</h4>
+<ul>
+<% @comments.each do |comment| %>
+  <li><%= comment.body %></li>
+<% end %>  
+</ul>
+
+<h4>Say Hi</h4>
+
+<form action="<%= user_comments_url(@user)%>" method="POST">
+  <%= auth_input %>
+  
+  <label>Comment
+    <textarea name="comment[body]"></textarea>
+  </label>
+  
+  <input type="submit" value="Add Comment">
+</form>

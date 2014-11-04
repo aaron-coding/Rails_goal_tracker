@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @goals = current_user == @user ? @user.goals : @user.public_goals
+    @comments = @user.comments
     render :show
   end
   

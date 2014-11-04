@@ -6,7 +6,14 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
   
   has_many :goals
-  
+  has_many :comments, as: :commentable
+  has_many(
+    :authored_comments,
+    class_name: "Comment",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+   
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
