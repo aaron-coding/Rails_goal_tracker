@@ -5,9 +5,7 @@ class User < ActiveRecord::Base
   
   after_initialize :ensure_session_token
   
-  has_many(
-    :goals
-  )
+  has_many :goals
   
   def password=(password)
     @password = password
@@ -44,8 +42,7 @@ class User < ActiveRecord::Base
   
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
-    return if user.nil? || !(user.is_password?(password))
-    user
+    user && user.is_password?(password) ? user : nil
   end
   
 end

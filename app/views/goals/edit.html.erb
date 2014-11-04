@@ -1,0 +1,25 @@
+<h1>Edit goal</h1>
+
+<form action="<%= user_goal_url(@user, @goal) %>" method="POST">
+  <input type="hidden" name="_method" value="PATCH" >
+  <%= auth_input %>
+  
+  <label>
+    Goal
+    <input type="text" 
+      name="goal[goal]" 
+      value="<%= @goal.goal %>">
+      
+  </label>
+  
+  <label>
+    Top Secret
+  <input type="checkbox" 
+    name="goal[top_secret]" 
+    value="true"
+    id="goal_top_secret"
+    <%= "checked" if @goal.top_secret %> > 
+  </label>
+  
+  <input type="submit" value="Update goal">
+</form>

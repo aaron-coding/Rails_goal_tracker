@@ -1,6 +1,14 @@
-<h1>Welcome <%= @user.id %></h1>
+<h1>Welcome</h1>
 
 <h3>My Goals</h3>
+<ul>
 <% @goals.each do |goal|%>
-  <%= goal.goal %>
+<li>  <%= goal.goal %>
+  <% if current_user == @user %>
+    <%= link_to "Edit goal", edit_user_goal_url(@user, goal) %>
+    <%= button_to "Delete goal", goal_url(goal), method: :delete %> 
+  <% end %>
+</li>
 <% end %>
+
+</ul>

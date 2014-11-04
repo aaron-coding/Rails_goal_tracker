@@ -4,13 +4,11 @@ class UsersController < ApplicationController
   end
   
   def home
-    @user = current_user
     render :home
   end
   
   def create
     @user = User.new(user_params)
-    
     if @user.save
       signin!(@user)
       redirect_to root_url
@@ -26,11 +24,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    if current_user == @user
-      @goals = @user.goals
-    else
-      @goals = @user.public_goals
-    end
+    @goals = current_user == @user ? @user.goals : @user.public_goals
     render :show
   end
   

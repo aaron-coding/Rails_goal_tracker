@@ -1,1 +1,1 @@
-<%= flash[:errors].join("<br>") if flash[:errors] %>
+<%= flash[:errors].join("<br>").html_safe if flash[:errors] %>
